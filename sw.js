@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zakat-app-v3.0.0';
+const CACHE_NAME = 'zakat-app-v4.0.0';
 const ASSETS = [
   './',
   './index.html',
@@ -52,3 +52,4 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+
