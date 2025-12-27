@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zakat-app-v3.0.1'; // قم بتغيير هذا الرقم كلما عدلت في HTML ليحدث عند الجميع فوراً
+const CACHE_NAME = 'zakat-app-v3.0.2'; // قم بتغيير هذا الرقم كلما عدلت في HTML ليحدث عند الجميع فوراً
 const ASSETS = [
   './',
   './index.html',
@@ -48,3 +48,4 @@ self.addEventListener('fetch', (event) => {
       .catch(() => caches.match(event.request))
   );
 });
+
