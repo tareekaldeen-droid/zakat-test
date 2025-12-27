@@ -1,0 +1,22 @@
+{
+  "name": "Zekât Hesaplayıcı",
+  "short_name": "Zekât",
+  "description": "Şer'i Zekât Hesaplama Uygulaması",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5f9f7",
+  "theme_color": "#0d7c66",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "RABIT_LOGO_TURKI_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "RABIT_LOGO_TURKI_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
