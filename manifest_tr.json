@@ -9,14 +9,15 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "RABIT_LOGO_TURKI_192.png",
+      "src": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=378,fit=crop,trim=68.26666666666667;68.26666666666667;68.26666666666667;68.26666666666667/a5oqci6YCwpNHTpH/aagemini_generated_image_l7bj58l7bj58l7bj---uo3o-r-o-c-5ZF666IagpUTfAxI.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "RABIT_LOGO_TURKI_512.png",
+      "src": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=378,fit=crop,trim=68.26666666666667;68.26666666666667;68.26666666666667;68.26666666666667/a5oqci6YCwpNHTpH/aagemini_generated_image_l7bj58l7bj58l7bj---uo3o-r-o-c-5ZF666IagpUTfAxI.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
+
