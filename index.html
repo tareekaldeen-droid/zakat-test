@@ -3545,21 +3545,56 @@ body.dark-mode .smart-logo-box {
 
 
 
-<!-- شاشة الترحيب -->
+<!-- شاشة الترحيب المحسنة -->
 <div id="splash-screen">
-    <img id="splash-logo-img" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=378,fit=crop,trim=68.26666666666667;68.26666666666667;68.26666666666667;68.26666666666667/a5oqci6YCwpNHTpH/gemini_generated_image_l7bj58l7bj58l7bj-NbeC6o4IVbdpKqlw.png" alt="Logo" class="splash-logo">
+    <!-- اللوجو -->
+    <img id="splash-logo-img" src="" alt="Logo" class="splash-logo">
+    
+    <!-- شريط التحميل -->
     <div class="splash-loader"></div>
-    <h3 style="margin-top: 15px; color: #0d7c66; font-family: 'Amiri', serif;">جاري التحميل...</h3>
+    
+    <!-- نص التحميل (يدعم التغيير الفوري) -->
+    <h3 id="splash-text" 
+        style="margin-top: 15px; color: #0d7c66; font-family: 'Amiri', serif; font-weight: bold;"
+        data-ar="جاري التحميل..." 
+        data-tr="Yükleniyor...">
+        جاري التحميل...
+    </h3>
 </div>
 
-<!-- نافذة الإشعارات داخل التطبيق -->
-<div id="notificationModal" class="pwa-modal">
-    <div class="pwa-content">
-        <img id="notifImage" src="" alt="Notification" class="pwa-img">
+<!-- نافذة الترويج للتثبيت (تظهر بعد دقيقة) -->
+<div id="installPromoModal" class="pwa-modal">
+    <div class="pwa-content" style="max-width: 350px;">
+        <div style="background: linear-gradient(135deg, #0d7c66, #31a592); padding: 20px; color: white;">
+            <div style="font-size: 50px;">📲</div>
+            <h3 class="pwa-title" style="color: white; margin: 10px 0 0;" data-ar="حمل التطبيق الآن" data-tr="Uygulamayı Şimdi İndir">حمل التطبيق الآن</h3>
+        </div>
         <div class="pwa-body">
-            <h3 id="notifTitle" class="pwa-title"></h3>
-            <p id="notifBody" class="pwa-text"></p>
-            <button onclick="closeNotification()" class="pwa-btn" data-ar="حسناً، فهمت" data-tr="Tamam, Anladım">حسناً، فهمت</button>
+            <p class="pwa-text" data-ar="استخدم الحاسبة بدون إنترنت واحصل على تجربة أسرع وأفضل." data-tr="Hesap makinesini internetsiz kullanın, daha hızlı ve iyi bir deneyim yaşayın.">
+                استخدم الحاسبة بدون إنترنت واحصل على تجربة أسرع وأفضل.
+            </p>
+            
+            <!-- تعليمات الآيفون (تظهر فقط للآيفون) -->
+            <div id="ios-instructions" style="display: none; background: #f5f5f5; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; text-align: center;">
+                <p style="margin-bottom: 5px;">
+                    <span data-ar="للتثبيت على الآيفون:" data-tr="iPhone'a yüklemek için:">للتثبيت على الآيفون:</span>
+                </p>
+                <p>
+                    1. <span data-ar="اضغط على زر المشاركة" data-tr="Paylaş butonuna basın">اضغط على زر المشاركة</span> <img src="https://img.icons8.com/ios-glyphs/30/000000/share-rounded.png" style="width: 15px; vertical-align: middle;">
+                </p>
+                <p>
+                    2. <span data-ar="اختر 'إضافة إلى الصفحة الرئيسية'" data-tr="'Ana Ekrana Ekle'yi seçin">اختر "إضافة إلى الصفحة الرئيسية"</span> ➕
+                </p>
+            </div>
+
+            <div class="btn-group" style="flex-direction: column;">
+                <button id="promoInstallBtn" class="pwa-btn" onclick="installPWA()">
+                    <span data-ar="تثبيت" data-tr="Yükle">تثبيت</span>
+                </button>
+                <button class="btn btn-outline" style="width: 100%; border: none; margin-top: 5px;" onclick="closePromoModal()">
+                    <span data-ar="ليس الآن" data-tr="Şimdi Değil">ليس الآن</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -3637,7 +3672,21 @@ body.dark-mode .smart-logo-box {
 
     <!-- القائمة الرئيسية (لم يتم تغيير أي شيء هنا) -->
     <div class="modern-menu-grid">
-        
+
+
+
+        <!-- زر التثبيت في الرئيسية (يظهر فقط إذا لم يكن مثبتاً) -->
+<div id="homeInstallCard" class="menu-card wide-card" onclick="installPWA()" style="display: none; background: linear-gradient(135deg, #2196f3, #1976d2); color: white; border: none;">
+    <div class="card-row">
+        <div class="icon-box" style="background: rgba(255,255,255,0.2); color: white;">📲</div>
+        <div class="text-info centered">
+            <h3 data-ar="تثبيت التطبيق" data-tr="Uygulamayı Yükle">تثبيت التطبيق</h3>
+            <p style="color: rgba(255,255,255,0.9);" data-ar="يعمل بدون إنترنت" data-tr="Çevrimdışı Çalışır">يعمل بدون إنترنت</p>
+        </div>
+        <div class="action-arrow" style="color: white;">↓</div>
+    </div>
+</div>
+
         <!-- 1. حاسبة الزكاة -->
         <div class="menu-card wide-card" onclick="navigateTo('calculator')">
             <div class="card-row">
@@ -17931,141 +17980,167 @@ function loadSavedFont() {
 
 
 
-// ============================================
-    // 🚀 نظام إدارة اللوجو والإشعارات الذكي (PWA)
+    // ============================================
+    // 🚀 النظام الشامل: PWA + اللوجو + التثبيت الذكي
     // ============================================
 
-    // 1. روابط الصور (الثوابت)
+    // 1. الثوابت
     const LOGO_AR = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=378,fit=crop,trim=68.26666666666667;68.26666666666667;68.26666666666667;68.26666666666667/a5oqci6YCwpNHTpH/gemini_generated_image_l7bj58l7bj58l7bj-NbeC6o4IVbdpKqlw.png";
     const LOGO_TR = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=378,fit=crop,trim=68.26666666666667;68.26666666666667;68.26666666666667;68.26666666666667/a5oqci6YCwpNHTpH/aagemini_generated_image_l7bj58l7bj58l7bj---uo3o-r-o-c-5ZF666IagpUTfAxI.png";
+    let deferredPrompt; // لتخزين حدث التثبيت
 
-    // 2. دالة تحديث اللوجو في كل مكان (الرئيسية، الإعدادات، السبلاش)
-    function updateAppLogos(lang) {
+    // 2. التحقق من نوع الجهاز (آيفون أم لا)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    // ============================================
+    // 🛠️ دوال إدارة اللغة واللوجو (بدون أخطاء)
+    // ============================================
+    
+    function updateAppInterface(lang) {
+        // 1. تحديد مصدر الصورة والنص المناسب
         const newSrc = lang === 'tr' ? LOGO_TR : LOGO_AR;
+        const splashText = lang === 'tr' ? "Yükleniyor..." : "جاري التحميل...";
         
-        // تحديث جميع صور اللوجو داخل التطبيق (الرئيسية + الإعدادات)
-        const appLogos = document.querySelectorAll('.logo-img, .hero-logo-img');
+        // 2. تحديث جميع صور اللوجو في التطبيق
+        const appLogos = document.querySelectorAll('.logo-img, .hero-logo-img, .splash-logo');
         appLogos.forEach(img => {
-            img.src = newSrc;
+            if(img) img.src = newSrc;
         });
 
-        // تحديث لوجو شاشة الترحيب (Splash Screen)
-        const splashLogo = document.getElementById('splash-logo-img');
-        if(splashLogo) splashLogo.src = newSrc;
+        // 3. تحديث نص شاشة الترحيب فوراً
+        const splashTextElem = document.getElementById('splash-text');
+        if (splashTextElem) splashTextElem.textContent = splashText;
+
+        // 4. تحديث ملف المانيفست (للتثبيت القادم)
+        const manifestLink = document.getElementById('app-manifest');
+        if (manifestLink) manifestLink.href = lang === 'tr' ? 'manifest_tr.json' : 'manifest_ar.json';
+
+        // 5. حفظ اللغة
+        localStorage.setItem('selectedLanguage', lang);
     }
 
-    // 3. عند تحميل الصفحة (التشغيل الأول)
+    // ============================================
+    // 📲 دوال التثبيت (أندرويد + آيفون)
+    // ============================================
+
+    // التقاط حدث التثبيت (للأندرويد والكمبيوتر)
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallButtons(); // إظهار الأزرار في الواجهة
+    });
+
+    function showInstallButtons() {
+        // إظهار زر التثبيت في الرئيسية
+        const homeBtn = document.getElementById('homeInstallCard');
+        if(homeBtn) homeBtn.style.display = 'flex';
+
+        // إظهار زر التثبيت في الإعدادات
+        const settingsBtn = document.getElementById('installBtn');
+        if(settingsBtn) settingsBtn.style.display = 'flex';
+    }
+
+    // دالة التثبيت الرئيسية (تستدعى عند الضغط على أي زر تثبيت)
+    async function installPWA() {
+        if (isIOS) {
+            // منطق الآيفون: إظهار التعليمات
+            const modal = document.getElementById('installPromoModal');
+            const iosInstr = document.getElementById('ios-instructions');
+            const promoBtn = document.getElementById('promoInstallBtn');
+            
+            if (modal && iosInstr) {
+                modal.classList.add('active'); // فتح النافذة
+                iosInstr.style.display = 'block'; // إظهار تعليمات الآيفون
+                if(promoBtn) promoBtn.style.display = 'none'; // إخفاء زر التثبيت العادي
+            } else {
+                alert(currentLanguage === 'ar' ? 
+                    "للتثبيت على الآيفون: اضغط على زر المشاركة بالأسفل ثم اختر 'إضافة إلى الصفحة الرئيسية'" : 
+                    "iPhone'a yüklemek için: Paylaş butonuna basın ve 'Ana Ekrana Ekle'yi seçin");
+            }
+        } else if (deferredPrompt) {
+            // منطق الأندرويد/الكمبيوتر
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                deferredPrompt = null;
+                // إخفاء الأزرار بعد التثبيت
+                const homeBtn = document.getElementById('homeInstallCard');
+                if(homeBtn) homeBtn.style.display = 'none';
+                closePromoModal();
+            }
+        }
+    }
+
+    // ============================================
+    // ⏱️ مؤقت النافذة المنبثقة (بعد 1 دقيقة)
+    // ============================================
+    function initInstallPromo() {
+        // إذا كان التطبيق مثبتاً بالفعل، لا تفعل شيئاً
+        if (isStandalone) return;
+
+        // تحقق مما إذا تم إغلاق النافذة سابقاً في هذه الجلسة
+        if (sessionStorage.getItem('promoShown')) return;
+
+        setTimeout(() => {
+            // التحقق مرة أخرى (لأن المستخدم قد يكون ثبت التطبيق خلال الدقيقة)
+            if (!isStandalone && (deferredPrompt || isIOS)) {
+                const modal = document.getElementById('installPromoModal');
+                if (modal) {
+                    modal.classList.add('active');
+                    sessionStorage.setItem('promoShown', 'true');
+                    
+                    // تخصيص المحتوى للآيفون
+                    if (isIOS) {
+                        document.getElementById('ios-instructions').style.display = 'block';
+                        document.getElementById('promoInstallBtn').style.display = 'none';
+                    }
+                }
+            }
+        }, 60000); // 60000 ميلي ثانية = 1 دقيقة
+    }
+
+    function closePromoModal() {
+        const modal = document.getElementById('installPromoModal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    // ============================================
+    // 🎬 عند تحميل الصفحة (التشغيل)
+    // ============================================
     window.addEventListener('load', () => {
         const splash = document.getElementById('splash-screen');
         
-        // تحديد اللغة المحفوظة أو لغة المتصفح
+        // 1. تطبيق اللغة واللوجو فوراً
         const savedLang = localStorage.getItem('selectedLanguage') || (navigator.language.startsWith('tr') ? 'tr' : 'ar');
+        // تحديث القائمة المنسدلة لتطابق اللغة المحفوظة
+        const langSelect = document.getElementById('languageSelect');
+        if(langSelect) langSelect.value = savedLang;
         
-        // تطبيق اللوجو المناسب فوراً
-        updateAppLogos(savedLang);
+        updateAppInterface(savedLang);
 
-        // إخفاء شاشة الترحيب بعد ثانيتين
+        // 2. إخفاء السبلاش سكرين بنعومة
         setTimeout(() => {
             splash.classList.add('hidden');
             setTimeout(() => splash.style.display = 'none', 500);
         }, 2000);
 
-        // التحقق من الإشعارات
-        checkForUpdates(false);
+        // 3. بدء مؤقت التثبيت
+        initInstallPromo();
+
+        // 4. إذا كان آيفون، أظهر أزرار التثبيت في الواجهة فوراً (لأنها لا تعتمد على حدث)
+        if (isIOS && !isStandalone) {
+            showInstallButtons();
+        }
     });
 
-    // 4. عند تغيير اللغة من القائمة (التغيير المباشر)
+    // مراقب تغيير اللغة من القائمة
     document.getElementById('languageSelect').addEventListener('change', function(e) {
-        const lang = e.target.value;
-        const manifestLink = document.getElementById('app-manifest');
-
-        // حفظ اللغة الجديدة
-        localStorage.setItem('selectedLanguage', lang);
-
-        // تحديث اللوجو فوراً في كل الصفحات
-        updateAppLogos(lang);
-
-        // تغيير ملف المانيفست (للتثبيت المستقبلي)
-        manifestLink.href = lang === 'tr' ? 'manifest_tr.json' : 'manifest_ar.json';
+        updateAppInterface(e.target.value);
+        applyTranslation(); // دالتك الأصلية لترجمة النصوص
     });
 
-    // 5. منطق زر التثبيت (Install Prompt)
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        if(installBtn) installBtn.style.display = 'flex';
-    });
-
-    if(installBtn) {
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    installBtn.style.display = 'none';
-                }
-                deferredPrompt = null;
-            }
-        });
-    }
-
-    // 6. منطق الإشعارات (JSON Polling)
-    async function checkForUpdates(manualCheck = false) {
-        try {
-            const response = await fetch('notifications.json?t=' + new Date().getTime());
-            const data = await response.json();
-            const lastMsgId = localStorage.getItem('lastMessageId');
-            
-            if (data.active && (data.id != lastMsgId || manualCheck)) {
-                const isAr = currentLanguage === 'ar';
-                const title = isAr ? data.title_ar : data.title_tr;
-                const body = isAr ? data.body_ar : data.body_tr;
-
-                showInAppModal(title, body, data.image);
-                showSystemNotification(title, body, data.image);
-
-                if (!manualCheck) {
-                    localStorage.setItem('lastMessageId', data.id);
-                }
-            } else if (manualCheck) {
-                showToast(currentLanguage === 'ar' ? 'لا توجد تحديثات جديدة حالياً' : 'Şu anda yeni güncelleme yok', 'info');
-            }
-        } catch (error) {
-            console.error('Error fetching notifications:', error);
-        }
-    }
-
-    function showInAppModal(title, body, image) {
-        const modal = document.getElementById('notificationModal');
-        if(!modal) return;
-        document.getElementById('notifTitle').textContent = title;
-        document.getElementById('notifBody').textContent = body;
-        document.getElementById('notifImage').src = image;
-        modal.classList.add('active');
-    }
-
-    function closeNotification() {
-        const modal = document.getElementById('notificationModal');
-        if(modal) modal.classList.remove('active');
-    }
-
-    function showSystemNotification(title, body, icon) {
-        if (!("Notification" in window)) return;
-        if (Notification.permission === "granted") {
-            new Notification(title, { body: body, icon: icon });
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    new Notification(title, { body: body, icon: icon });
-                }
-            });
-        }
-    }
-
-    // 7. تسجيل Service Worker
+    // Service Worker (للتحديث)
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').then(reg => {
             reg.addEventListener('updatefound', () => {
@@ -18078,21 +18153,12 @@ function loadSavedFont() {
                 });
             });
         });
-        
-        let refreshing;
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (refreshing) return;
-            window.location.reload();
-            refreshing = true;
-        });
     }
 
 
 
 
-
     </script>
-   <!-- ربط ملف المانيفست -->
 <!-- رابط المانيفست الديناميكي -->
 <link rel="manifest" id="app-manifest" href="manifest_ar.json">
 <!-- أيقونة التطبيق -->
