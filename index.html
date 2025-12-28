@@ -3527,6 +3527,250 @@ body.dark-mode .smart-logo-box {
 
 
 
+
+/* === تصميم نافذة الإشعارات العصرية === */
+.notification-modal {
+    border-radius: 25px 25px 0 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+@media (min-width: 768px) {
+    .notification-modal {
+        border-radius: 25px;
+        width: 450px;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 50%) !important; /* Center on desktop */
+        bottom: auto !important;
+        top: 50%;
+    }
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(to right, rgba(13, 124, 102, 0.05), transparent);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notif-logo-small {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notif-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.notif-date-badge, .notif-time-badge {
+    background: var(--bg-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.notif-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.notif-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.notif-image-container {
+    position: relative;
+    margin: 10px 0 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.notif-main-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.notif-image-container:hover .notif-main-img {
+    transform: scale(1.05);
+}
+
+.notif-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.notif-actions {
+    padding: 0 20px 20px;
+}
+
+.notif-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.3);
+    transition: transform 0.2s;
+}
+
+.notif-btn:active {
+    transform: scale(0.98);
+}
+
+/* === تصميم زر الإعدادات المطور === */
+.settings-row-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.settings-row-btn:hover {
+    background: white;
+    border-color: var(--primary-color);
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.row-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-bg-small {
+    width: 40px;
+    height: 40px;
+    background: rgba(13, 124, 102, 0.1);
+    color: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.row-title {
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.row-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* === تصميم سجل التحديثات (Timeline) === */
+.full-screen-modal {
+    height: 90vh; /* ليس كامل الشاشة تماماً لسهولة الإغلاق */
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-header-sticky {
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    margin-bottom: 15px;
+}
+
+.close-icon-btn {
+    background: #f5f5f5;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #333;
+}
+
+.updates-timeline {
+    padding: 10px 5px;
+}
+
+.update-card {
+    background: var(--bg-color);
+    border-radius: 16px;
+    padding: 0;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.update-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.02);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.version-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.update-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.update-body {
+    padding: 15px;
+}
+
+.update-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.update-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+        
+
     </style>
 </head>
 <body>
@@ -3553,13 +3797,45 @@ body.dark-mode .smart-logo-box {
     <button class="close-modal" onclick="closeModal('install-modal')" data-ar="ليس الآن" data-tr="Şimdi Değil">ليس الآن</button>
 </div>
 
-<!-- نافذة الإشعارات -->
-<div class="custom-modal" id="notification-modal">
-    <img id="notif-img" src="" class="modal-img" style="width: 100%; height: 150px; border-radius: 10px;">
-    <h3 class="modal-title" id="notif-title"></h3>
-    <p class="modal-text" id="notif-body"></p>
-    <button class="install-btn" onclick="closeModal('notification-modal')" data-ar="حسناً" data-tr="Tamam">حسناً</button>
+<!-- نافذة الإشعارات المتطورة -->
+<div class="custom-modal notification-modal" id="notification-modal">
+    <div class="notif-header">
+        <img id="notif-logo-top" src="" class="notif-logo-small">
+        <div class="notif-meta">
+            <span id="notif-date" class="notif-date-badge"></span>
+            <span id="notif-time" class="notif-time-badge"></span>
+        </div>
+    </div>
+    
+    <div class="notif-content">
+        <h3 class="notif-title animate-pop" id="notif-title"></h3>
+        
+        <div class="notif-image-container">
+            <img id="notif-img" src="" class="notif-main-img">
+            <div class="notif-glow"></div>
+        </div>
+        
+        <p class="notif-body" id="notif-body"></p>
+    </div>
+
+    <div class="notif-actions">
+        <button class="btn-primary notif-btn" onclick="closeNotification()" data-ar="حسناً، فهمت" data-tr="Tamam, Anladım">
+            حسناً، فهمت
+        </button>
+    </div>
 </div>
+
+<!-- نافذة سجل التحديثات (تظهر عند الضغط على زر في الإعدادات) -->
+<div class="custom-modal full-screen-modal" id="updates-history-modal">
+    <div class="modal-header-sticky">
+        <h3 data-ar="سجل التحديثات" data-tr="Güncelleme Geçmişi">سجل التحديثات</h3>
+        <button class="close-icon-btn" onclick="closeModal('updates-history-modal')">✕</button>
+    </div>
+    <div id="updates-list-container" class="updates-timeline">
+        <!-- سيتم ملؤه بالجافاسكريبت -->
+    </div>
+</div>
+
 
 
 
@@ -13009,14 +13285,18 @@ body.dark-mode .smart-logo-box {
 
 
 <div class="control-group" style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-    <label class="control-label" data-ar="📢 ما الجديد" data-tr="📢 Yenilikler">📢 ما الجديد</label>
-    <div id="whats-new-container">
-        <!-- سيتم ملؤه تلقائياً من الجافاسكريبت -->
-        <div style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;" data-ar="لا توجد تحديثات جديدة" data-tr="Yeni güncelleme yok">
-            لا توجد تحديثات جديدة
+    <div class="settings-row-btn" onclick="showUpdatesHistory()">
+        <div class="row-info">
+            <div class="icon-bg-small">🚀</div>
+            <div>
+                <div class="row-title" data-ar="ما الجديد؟" data-tr="Yenilikler">ما الجديد؟</div>
+                <div class="row-subtitle" data-ar="عرض سجل التحديثات والميزات" data-tr="Güncelleme geçmişini görüntüle">عرض سجل التحديثات والميزات</div>
+            </div>
         </div>
+        <div class="row-arrow">←</div>
     </div>
 </div>
+
 
 
 
@@ -17956,34 +18236,46 @@ function loadSavedFont() {
     document.head.appendChild(link);
   })();
 // ==========================================
-// منطق PWA المتقدم (Splash, Install, Notif)
+// منطق PWA المتقدم (Splash, Install, Notif, Updates)
 // ==========================================
 
 const AR_LOGO = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=711,fit=crop/a5oqci6YCwpNHTpH/gemini_generated_image_l7bj58l7bj58l7bj-1-1-okXWwLISbvVl1n90.png";
 const TR_LOGO = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=711,fit=crop/a5oqci6YCwpNHTpH/__gemini_generated_image_l7bj58l7bj58l7bj---uo3o-r-o-c-1-Egn1jwHegFrVqeor.png";
 
-// 1. إعداد شاشة الترحيب واللوجو
+// إعدادات الإشعارات
+const NOTIFICATION_CONFIG = {
+    MAX_SHOW_COUNT: 3, // عدد مرات ظهور الإشعار لنفس التحديث قبل أن يتوقف
+    JSON_URL: 'notifications.json'
+};
+
+// 1. إعداد شاشة الترحيب واللوجو عند التحميل
 document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('appLanguage') || 'ar';
     const currentLogo = lang === 'ar' ? AR_LOGO : TR_LOGO;
     
-    // تعيين اللوجو في السبلاش
-    document.getElementById('splash-logo-img').src = currentLogo;
-    document.getElementById('install-logo').src = currentLogo;
+    // تعيين اللوجو في السبلاش ونافذة التثبيت
+    const splashLogo = document.getElementById('splash-logo-img');
+    const installLogo = document.getElementById('install-logo');
+    
+    if(splashLogo) splashLogo.src = currentLogo;
+    if(installLogo) installLogo.src = currentLogo;
     
     // تحديث اللوجو في الهيدر والصفحة الرئيسية
     updateAppLogos(currentLogo);
 
     // تحريك شريط التحميل
     setTimeout(() => {
-        document.getElementById('splash-progress').style.width = '100%';
+        const progressBar = document.getElementById('splash-progress');
+        if(progressBar) progressBar.style.width = '100%';
     }, 100);
 
     // إخفاء الشاشة بعد ثانيتين
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
-        splash.style.opacity = '0';
-        setTimeout(() => splash.remove(), 500);
+        if (splash) {
+            splash.style.opacity = '0';
+            setTimeout(() => splash.remove(), 500);
+        }
         
         // التحقق من الإشعارات بعد الفتح
         checkNotifications();
@@ -18013,93 +18305,203 @@ function showInstallPrompt() {
     }
 }
 
-document.getElementById('install-btn-action').addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            deferredPrompt = null;
+const installBtnAction = document.getElementById('install-btn-action');
+if (installBtnAction) {
+    installBtnAction.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                deferredPrompt = null;
+            }
+            closeModal('install-modal');
         }
-        closeModal('install-modal');
-    }
-});
+    });
+}
 
 function closeModal(id) {
-    document.getElementById(id).classList.remove('show');
-    document.getElementById('modal-overlay').classList.remove('show');
+    const modal = document.getElementById(id);
+    const overlay = document.getElementById('modal-overlay');
+    if(modal) modal.classList.remove('show');
+    if(overlay) overlay.classList.remove('show');
 }
 
-// 3. منطق الإشعارات (Notifications)
+// 3. منطق الإشعارات المتقدم (Check Notifications)
 async function checkNotifications() {
     try {
-        const response = await fetch('notifications.json');
+        const response = await fetch(NOTIFICATION_CONFIG.JSON_URL);
         const data = await response.json();
-        const lastSeenId = localStorage.getItem('lastNotificationId');
         
-        if (data.id !== lastSeenId) {
-            const lang = localStorage.getItem('appLanguage') || 'ar';
-            const content = data[lang];
-            
-            document.getElementById('notif-title').textContent = content.title;
-            document.getElementById('notif-body').textContent = content.body;
-            document.getElementById('notif-img').src = content.image;
-            
-            // تحديث معلومات "ما الجديد" في الإعدادات
-            updateWhatsNewInSettings(data.date, content.body);
+        // حفظ البيانات لاستخدامها في قسم الإعدادات لاحقاً
+        window.updatesData = data;
 
-            // عرض النافذة
-            document.getElementById('modal-overlay').classList.add('show');
-            document.getElementById('notification-modal').classList.add('show');
+        // التحقق من وجود تحديث جديد
+        if (data.latest) {
+            const latest = data.latest;
+            const currentId = latest.id;
             
-            localStorage.setItem('lastNotificationId', data.id);
+            // قراءة الذاكرة
+            const storedId = localStorage.getItem('notif_last_id');
+            // قراءة العداد (كم مرة ظهر هذا التحديث)
+            let showCount = parseInt(localStorage.getItem('notif_show_count_' + currentId) || '0');
+
+            // إذا كان تحديثاً جديداً كلياً، نُصفر العداد
+            if (storedId !== currentId) {
+                localStorage.setItem('notif_last_id', currentId);
+                showCount = 0;
+                localStorage.setItem('notif_show_count_' + currentId, '0');
+            }
+
+            // شرط الظهور: لم يتجاوز الحد الأقصى للظهور
+            if (showCount < NOTIFICATION_CONFIG.MAX_SHOW_COUNT) {
+                
+                // زيادة العداد
+                localStorage.setItem('notif_show_count_' + currentId, (showCount + 1).toString());
+
+                // تجهيز المحتوى حسب اللغة
+                const lang = localStorage.getItem('appLanguage') || 'ar';
+                const content = latest[lang];
+                const logo = lang === 'ar' ? AR_LOGO : TR_LOGO;
+
+                // تعبئة البيانات في النافذة العصرية
+                const logoTop = document.getElementById('notif-logo-top');
+                if(logoTop) logoTop.src = logo;
+
+                const dateBadge = document.getElementById('notif-date');
+                if(dateBadge) dateBadge.textContent = latest.date;
+
+                const timeBadge = document.getElementById('notif-time');
+                if(timeBadge) timeBadge.textContent = latest.time;
+
+                const titleEl = document.getElementById('notif-title');
+                if(titleEl) titleEl.textContent = content.title;
+
+                const bodyEl = document.getElementById('notif-body');
+                if(bodyEl) bodyEl.textContent = content.body;
+
+                const imgEl = document.getElementById('notif-img');
+                if(imgEl) imgEl.src = latest.image;
+
+                // عرض النافذة
+                setTimeout(() => {
+                    document.getElementById('modal-overlay').classList.add('show');
+                    document.getElementById('notification-modal').classList.add('show');
+                }, 1500);
+            }
         }
     } catch (e) {
-        console.log('No notifications or offline');
+        console.log('Offline or Error fetching notifications', e);
     }
 }
 
-function updateWhatsNewInSettings(date, text) {
-    // يمكنك إضافة عنصر HTML في صفحة الإعدادات لعرض هذا
-    // مثال: <div id="whats-new-container"></div>
-    const container = document.getElementById('whats-new-container');
-    if (container) {
-        container.innerHTML = `
-            <div style="background: var(--bg-color); padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); margin-top: 10px;">
-                <div style="font-size: 0.8rem; color: var(--primary-color); margin-bottom: 5px;">${date}</div>
-                <div style="font-size: 0.9rem;">${text}</div>
+function closeNotification() {
+    closeModal('notification-modal');
+}
+
+// 4. منطق عرض سجل التحديثات في الإعدادات
+async function showUpdatesHistory() {
+    let data = window.updatesData;
+    
+    // إذا لم تكن البيانات محملة مسبقاً، حاول تحميلها الآن
+    if (!data) {
+        try {
+            const response = await fetch(NOTIFICATION_CONFIG.JSON_URL);
+            data = await response.json();
+            window.updatesData = data;
+        } catch (e) {
+            showToast(currentLanguage === 'ar' ? 'لا يوجد اتصال بالإنترنت' : 'İnternet bağlantısı yok', 'error');
+            return;
+        }
+    }
+
+    const container = document.getElementById('updates-list-container');
+    if (!container) return;
+
+    const lang = currentLanguage;
+    let html = '';
+
+    // 1. إضافة التحديث الحالي (الأحدث)
+    if (data.latest) {
+        html += createUpdateCard(data.latest, lang, true);
+    }
+
+    // 2. إضافة السجل القديم
+    if (data.history && data.history.length > 0) {
+        data.history.forEach(update => {
+            html += createUpdateCard(update, lang, false);
+        });
+    }
+
+    container.innerHTML = html;
+    
+    document.getElementById('modal-overlay').classList.add('show');
+    document.getElementById('updates-history-modal').classList.add('show');
+}
+
+// دالة مساعدة لإنشاء بطاقة التحديث HTML
+function createUpdateCard(update, lang, isLatest) {
+    const content = update[lang];
+    const badgeText = isLatest ? (lang === 'ar' ? '✨ الأحدث' : '✨ En Yeni') : (update.version || update.id);
+    const badgeColor = isLatest ? 'var(--accent-color)' : 'var(--text-secondary)';
+    const badgeBg = isLatest ? 'rgba(212, 175, 55, 0.15)' : 'rgba(0,0,0,0.05)';
+    const borderColor = isLatest ? 'var(--primary-color)' : 'var(--border-color)';
+    
+    return `
+        <div class="update-card" style="border-color: ${borderColor}; ${isLatest ? 'box-shadow: 0 4px 15px rgba(13, 124, 102, 0.1);' : ''}">
+            <div class="update-header">
+                <span class="version-badge" style="color: ${badgeColor}; background: ${badgeBg}; border: 1px solid ${badgeColor};">${badgeText}</span>
+                <span class="update-date">${update.date}</span>
             </div>
-        `;
-    }
+            <div class="update-body">
+                <h4 style="margin-bottom: 10px; color: var(--primary-color); font-size: 1.1rem;">${content.title}</h4>
+                ${update.image ? `<img src="${update.image}" class="update-img" loading="lazy" style="border: 1px solid #eee;">` : ''}
+                <p class="update-desc">${content.body}</p>
+            </div>
+        </div>
+    `;
 }
 
-// 4. مراقبة تغيير اللغة لتحديث اللوجو والمانيفست
+// 5. مراقبة تغيير اللغة لتحديث اللوجو والنصوص
 document.getElementById('languageSelect').addEventListener('change', function(e) {
     const newLang = e.target.value;
     const newLogo = newLang === 'ar' ? AR_LOGO : TR_LOGO;
     
     updateAppLogos(newLogo);
     
-    // ملاحظة: تغيير المانيفست يتطلب إعادة تحميل الصفحة ليعمل بشكل كامل في بعض المتصفحات
-    // لكننا نحدثه في localStorage ليتم تحميله بشكل صحيح في المرة القادمة
+    // حفظ اللغة
     localStorage.setItem('appLanguage', newLang);
     
-    // تحديث النصوص في النوافذ المنبثقة
+    // تحديث النصوص في التطبيق
     applyTranslation();
+    
+    // إذا كانت نافذة الإشعارات مفتوحة، قم بتحديث محتواها فوراً
+    if (document.getElementById('notification-modal').classList.contains('show') && window.updatesData) {
+        const latest = window.updatesData.latest;
+        const content = latest[newLang];
+        
+        document.getElementById('notif-title').textContent = content.title;
+        document.getElementById('notif-body').textContent = content.body;
+        document.getElementById('notif-logo-top').src = newLogo;
+        
+        const btn = document.querySelector('.notif-btn');
+        if(btn) btn.textContent = newLang === 'ar' ? 'حسناً، فهمت' : 'Tamam, Anladım';
+    }
 });
 
-// 5. تسجيل Service Worker
+// 6. تسجيل Service Worker (للتحديث التلقائي والعمل دون إنترنت)
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').then(registration => {
             console.log('SW registered');
             
-            // التحقق من وجود تحديثات
+            // التحقق من وجود تحديثات في الكود (HTML/JS/CSS)
             registration.addEventListener('updatefound', () => {
                 const newWorker = registration.installing;
                 newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // تم تثبيت تحديث جديد، قم بإعادة التحميل
-                        if(confirm(currentLanguage === 'ar' ? 'تحديث جديد متوفر. هل تريد التحديث الآن؟' : 'Yeni güncelleme mevcut. Şimdi güncellemek ister misiniz?')) {
+                        // تم تثبيت تحديث جديد في الخلفية
+                        const msg = currentLanguage === 'ar' ? 'تحديث جديد للتطبيق متوفر. هل تريد التحديث الآن؟' : 'Uygulama için yeni güncelleme mevcut. Şimdi güncellemek ister misiniz?';
+                        if(confirm(msg)) {
                             window.location.reload();
                         }
                     }
@@ -18137,5 +18539,6 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
