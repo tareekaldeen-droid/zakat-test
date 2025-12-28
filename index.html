@@ -18329,33 +18329,39 @@ function closeModal(id) {
 // 3. منطق الإشعارات المتقدم (Check Notifications)
 async function checkNotifications() {
     try {
-        const response = await fetch(NOTIFICATION_CONFIG.JSON_URL);
+        // 🔥 التعديل الأول والهام جداً: إضافة وقت عشوائي للرابط لمنع الكاش
+        // هذا يجبر المتصفح على قراءة الملف الجديد فوراً عند تغييره
+        const response = await fetch(NOTIFICATION_CONFIG.JSON_URL + '?t=' + new Date().getTime());
         const data = await response.json();
         
-        // حفظ البيانات لاستخدامها في قسم الإعدادات لاحقاً
+        // حفظ البيانات لاستخدامها في قسم الإعدادات
         window.updatesData = data;
 
-        // التحقق من وجود تحديث جديد
         if (data.latest) {
             const latest = data.latest;
             const currentId = latest.id;
             
-            // قراءة الذاكرة
+            // قراءة آخر تحديث رآه المستخدم
             const storedId = localStorage.getItem('notif_last_id');
-            // قراءة العداد (كم مرة ظهر هذا التحديث)
+            
+            // قراءة العداد الخاص بهذا التحديث تحديداً
             let showCount = parseInt(localStorage.getItem('notif_show_count_' + currentId) || '0');
 
-            // إذا كان تحديثاً جديداً كلياً، نُصفر العداد
+            // 🛑 الحالة الأولى: هل هذا تحديث جديد كلياً؟
+            // إذا كان الـ ID في الملف يختلف عن الـ ID المخزن
             if (storedId !== currentId) {
-                localStorage.setItem('notif_last_id', currentId);
+                console.log("New update detected!");
+                // نعتبره جديداً ونصفر العداد
                 showCount = 0;
+                localStorage.setItem('notif_last_id', currentId);
                 localStorage.setItem('notif_show_count_' + currentId, '0');
             }
 
-            // شرط الظهور: لم يتجاوز الحد الأقصى للظهور
+            // 🛑 الحالة الثانية: هل يجب عرضه الآن؟
+            // نعرضه فقط إذا لم يتجاوز عدد مرات الظهور المسموحة
             if (showCount < NOTIFICATION_CONFIG.MAX_SHOW_COUNT) {
                 
-                // زيادة العداد
+                // زيادة العداد وحفظه
                 localStorage.setItem('notif_show_count_' + currentId, (showCount + 1).toString());
 
                 // تجهيز المحتوى حسب اللغة
@@ -18363,7 +18369,7 @@ async function checkNotifications() {
                 const content = latest[lang];
                 const logo = lang === 'ar' ? AR_LOGO : TR_LOGO;
 
-                // تعبئة البيانات في النافذة العصرية
+                // تعبئة البيانات
                 const logoTop = document.getElementById('notif-logo-top');
                 if(logoTop) logoTop.src = logo;
 
@@ -18379,21 +18385,24 @@ async function checkNotifications() {
                 const bodyEl = document.getElementById('notif-body');
                 if(bodyEl) bodyEl.textContent = content.body;
 
-              const imgEl = document.getElementById('notif-img');
-              if(imgEl) imgEl.src = content.image; // ✅ هذا الكود الجديد يأخذ الصورة حسب اللغة
-
+                // ✅ إصلاح الصورة: أخذ الصورة من داخل كائن اللغة
+                const imgEl = document.getElementById('notif-img');
+                if(imgEl) imgEl.src = content.image;
 
                 // عرض النافذة
                 setTimeout(() => {
                     document.getElementById('modal-overlay').classList.add('show');
                     document.getElementById('notification-modal').classList.add('show');
                 }, 1500);
+            } else {
+                console.log("Notification limit reached for this version.");
             }
         }
     } catch (e) {
         console.log('Offline or Error fetching notifications', e);
     }
 }
+
 
 function closeNotification() {
     closeModal('notification-modal');
@@ -18541,6 +18550,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
