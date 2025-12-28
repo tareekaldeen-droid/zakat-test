@@ -18400,15 +18400,15 @@ function closeNotification() {
 }
 
 // 4. منطق عرض سجل التحديثات في الإعدادات
+// 2. دالة عرض سجل التحديثات في الإعدادات (تعرض الأحدث فقط)
 async function showUpdatesHistory() {
     let data = window.updatesData;
     
-    // إذا لم تكن البيانات محملة مسبقاً، حاول تحميلها الآن
+    // إذا لم تكن البيانات محملة، حاول تحميلها
     if (!data) {
         try {
             const response = await fetch(NOTIFICATION_CONFIG.JSON_URL);
             data = await response.json();
-            window.updatesData = data;
         } catch (e) {
             showToast(currentLanguage === 'ar' ? 'لا يوجد اتصال بالإنترنت' : 'İnternet bağlantısı yok', 'error');
             return;
@@ -18421,17 +18421,12 @@ async function showUpdatesHistory() {
     const lang = currentLanguage;
     let html = '';
 
-    // 1. إضافة التحديث الحالي (الأحدث)
+    // ✅ التعديل هنا: عرض التحديث الأخير (latest) فقط
     if (data.latest) {
         html += createUpdateCard(data.latest, lang, true);
     }
 
-    // 2. إضافة السجل القديم
-    if (data.history && data.history.length > 0) {
-        data.history.forEach(update => {
-            html += createUpdateCard(update, lang, false);
-        });
-    }
+    // (تم حذف كود عرض السجل القديم history بناءً على طلبك)
 
     container.innerHTML = html;
     
@@ -18439,28 +18434,34 @@ async function showUpdatesHistory() {
     document.getElementById('updates-history-modal').classList.add('show');
 }
 
-// دالة مساعدة لإنشاء بطاقة التحديث HTML
+// دالة مساعدة لإنشاء بطاقة التحديث HTML (تدعم الصور حسب اللغة)
 function createUpdateCard(update, lang, isLatest) {
-    const content = update[lang];
-    const badgeText = isLatest ? (lang === 'ar' ? '✨ الأحدث' : '✨ En Yeni') : (update.version || update.id);
-    const badgeColor = isLatest ? 'var(--accent-color)' : 'var(--text-secondary)';
-    const badgeBg = isLatest ? 'rgba(212, 175, 55, 0.15)' : 'rgba(0,0,0,0.05)';
-    const borderColor = isLatest ? 'var(--primary-color)' : 'var(--border-color)';
+    const content = update[lang]; // الوصول لمحتوى اللغة (ar أو tr)
     
+    const badgeText = isLatest ? (lang === 'ar' ? '✨ الأحدث' : '✨ En Yeni') : (update.id);
+    const badgeColor = 'var(--accent-color)';
+    const badgeBg = 'rgba(212, 175, 55, 0.15)';
+    
+    // ✅ التعديل هنا: قراءة الصورة من داخل content.image (حسب اللغة)
+    const imageSrc = content.image ? content.image : ''; 
+
     return `
-        <div class="update-card" style="border-color: ${borderColor}; ${isLatest ? 'box-shadow: 0 4px 15px rgba(13, 124, 102, 0.1);' : ''}">
+        <div class="update-card" style="border-color: var(--primary-color); box-shadow: 0 4px 15px rgba(13, 124, 102, 0.1);">
             <div class="update-header">
                 <span class="version-badge" style="color: ${badgeColor}; background: ${badgeBg}; border: 1px solid ${badgeColor};">${badgeText}</span>
                 <span class="update-date">${update.date}</span>
             </div>
             <div class="update-body">
                 <h4 style="margin-bottom: 10px; color: var(--primary-color); font-size: 1.1rem;">${content.title}</h4>
-                ${update.image ? `<img src="${update.image}" class="update-img" loading="lazy" style="border: 1px solid #eee;">` : ''}
+                
+                ${imageSrc ? `<img src="${imageSrc}" class="update-img" loading="lazy" style="border: 1px solid #eee;">` : ''}
+                
                 <p class="update-desc">${content.body}</p>
             </div>
         </div>
     `;
 }
+
 
 // 5. مراقبة تغيير اللغة لتحديث اللوجو والنصوص
 document.getElementById('languageSelect').addEventListener('change', function(e) {
@@ -18540,6 +18541,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
