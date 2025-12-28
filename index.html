@@ -3619,25 +3619,58 @@ body.dark-mode .smart-logo-box {
     margin-bottom: 10px;
 }
 
+/* === تعديل منطقة الأزرار لتشبه زر التثبيت === */
 .notif-actions {
-    padding: 0 20px 20px;
+    padding: 0 20px 25px; /* زيادة المسافة السفلية قليلاً */
+    background: var(--card-bg); /* ضمان الخلفية */
 }
 
 .notif-btn {
     width: 100%;
-    padding: 14px;
-    border-radius: 14px;
+    padding: 16px; /* زيادة الحجم قليلاً */
+    border-radius: 50px; /* حواف دائرية بالكامل مثل زر التثبيت */
     font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+    /* التدرج اللوني والظل المطابق لزر التثبيت */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.3);
-    transition: transform 0.2s;
+    box-shadow: 0 8px 20px rgba(13, 124, 102, 0.3);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* تأثير عند الضغط */
 .notif-btn:active {
     transform: scale(0.98);
+    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.2);
 }
 
-/* === تصميم زر الإعدادات المطور === */
+/* تأثير اللمعان الخفيف (اختياري لجمالية أكثر) */
+.notif-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.notif-btn:hover::after {
+    left: 100%;
+}
+
+/* === تصميم زر الإعدادات المطور (كما هو) === */
 .settings-row-btn {
     display: flex;
     justify-content: space-between;
@@ -3685,6 +3718,7 @@ body.dark-mode .smart-logo-box {
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
+
 
 /* === تصميم سجل التحديثات (Timeline) === */
 .full-screen-modal {
@@ -3775,135 +3809,6 @@ body.dark-mode .smart-logo-box {
 
 
 
-/* تنسيق نافذة الإشعار */
-.notif-content {
-    padding: 0; /* إزالة الحواف الداخلية للكارد */
-    overflow: hidden;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.notif-header {
-    background: linear-gradient(135deg, rgba(13, 124, 102, 0.1), rgba(13, 124, 102, 0.05));
-    padding: 20px;
-    padding-bottom: 30px;
-    position: relative;
-}
-
-.notif-logo-wrapper {
-    width: 70px;
-    height: 70px;
-    background: white;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 0 auto;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 2;
-}
-
-.notif-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.notif-badges {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.badge-new {
-    background: #ff4757;
-    color: white;
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.badge-date {
-    background: rgba(0,0,0,0.05);
-    color: var(--text-secondary);
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
-.notif-body-content {
-    padding: 20px;
-    margin-top: -20px; /* لسحب المحتوى للأعلى قليلاً */
-    position: relative;
-    z-index: 3;
-    background: var(--bg-color);
-    border-radius: 20px 20px 0 0;
-}
-
-.notif-title {
-    color: var(--primary-color);
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.notif-img-container {
-    margin: 10px 0 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    border: 1px solid var(--border-color);
-}
-
-.notif-main-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.notif-text {
-    color: var(--text-color);
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-/* تنسيق الزر ليشبه زر التثبيت */
-.notif-footer {
-    padding: 0 20px 20px;
-    background: var(--bg-color);
-}
-
-.btn-full-width {
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 12px; /* حواف ناعمة */
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(13, 124, 102, 0.25);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn-full-width:active {
-    transform: scale(0.98);
-}
-
-.btn-text {
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
-}
 
 
 
@@ -18703,6 +18608,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
