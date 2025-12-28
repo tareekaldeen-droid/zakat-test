@@ -3774,55 +3774,6 @@ body.dark-mode .smart-logo-box {
 
 
 
-.install-like-btn {
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* نفس تدرج زر التثبيت */
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 50px; /* حواف دائرية بالكامل مثل أزرار التطبيقات */
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(13, 124, 102, 0.3); /* ظل ناعم */
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.install-like-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(13, 124, 102, 0.4);
-}
-
-.install-like-btn:active {
-    transform: scale(0.98);
-}
-
-.install-like-btn svg {
-    width: 22px;
-    height: 22px;
-}
-
-/* تأثير لمعان خفيف (اختياري لجمالية أكثر) */
-.install-like-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
-}
-
-.install-like-btn:hover::after {
-    left: 100%;
-}
 
 
 
@@ -13343,15 +13294,19 @@ body.dark-mode .smart-logo-box {
 
 
 <!-- زر سجل التحديثات بتصميم زر التثبيت -->
-<div class="control-group" style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; text-align: center;">
-    <button class="btn-primary install-like-btn" onclick="showUpdatesHistory()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
-        <span data-ar="سجل التحديثات والميزات" data-tr="Güncelleme Geçmişi">سجل التحديثات والميزات</span>
-    </button>
+<div class="control-group" style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+    <div class="settings-row-btn" onclick="showUpdatesHistory()">
+        <div class="row-info">
+            <div class="icon-bg-small">🚀</div>
+            <div>
+                <div class="row-title" data-ar="ما الجديد؟" data-tr="Yenilikler">ما الجديد؟</div>
+                <div class="row-subtitle" data-ar="عرض سجل التحديثات والميزات" data-tr="Güncelleme geçmişini görüntüle">عرض سجل التحديثات والميزات</div>
+            </div>
+        </div>
+        <div class="row-arrow">←</div>
+    </div>
 </div>
+
 
 
 
@@ -18606,6 +18561,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
