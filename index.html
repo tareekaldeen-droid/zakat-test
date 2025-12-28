@@ -3775,93 +3775,100 @@ body.dark-mode .smart-logo-box {
 
 
 /* ============================================ */
-/* 🖥️ تصحيح ظهور النوافذ على الكمبيوتر (Desktop Fixes) */
+/* 🖥️ تصحيح جذري لتمركز النوافذ على الكمبيوتر */
 /* ============================================ */
 @media (min-width: 768px) {
 
-    /* 1. تحويل النوافذ من شريط سفلي إلى نافذة منبثقة في المنتصف */
+    /* 1. ضبط الحاوية العامة للنوافذ */
+    .custom-modal,
+    .notification-modal,
+    .full-screen-modal,
+    #install-modal,
+    #updates-history-modal {
+        /* إلغاء وضعية الهاتف تماماً */
+        bottom: auto !important; 
+        right: auto !important;
+        margin: 0 !important;
+        
+        /* التمركز الدقيق في منتصف الشاشة */
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        
+        /* تحسين المظهر */
+        border-radius: 24px !important;
+        box-shadow: 0 25px 80px rgba(0,0,0,0.35) !important;
+        border: 1px solid rgba(0,0,0,0.1) !important;
+        
+        /* تغيير طريقة الحركة من الانزلاق إلى الظهور */
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+    }
+
+    /* 2. حالة الاختفاء (الوضع الافتراضي) */
     .custom-modal {
-        bottom: auto !important;       /* إلغاء الالتصاق بالأسفل */
-        top: 50% !important;           /* التموضع في المنتصف عمودياً */
-        left: 50% !important;          /* التموضع في المنتصف أفقياً */
-        transform: translate(-50%, -50%) scale(0.95); /* ضبط التوسيط مع تصغير بسيط للأنيميشن */
-        
-        width: 450px !important;       /* عرض ثابت أنيق */
-        max-width: 90%;                /* عدم تجاوز عرض الشاشة */
-        border-radius: 20px !important;/* حواف دائرية من جميع الجهات */
-        
-        opacity: 0;                    /* مخفي افتراضياً */
-        visibility: hidden;            /* لمنع التفاعل وهو مخفي */
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ناعمة */
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3); /* ظل قوي للبروز */
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important; /* منع النقر وهي مخفية */
+        z-index: 10001 !important; /* التأكد من أنها فوق كل شيء */
     }
 
-    /* حالة الظهور (Show State) */
+    /* 3. حالة الظهور (عند إضافة كلاس show) */
     .custom-modal.show {
-        bottom: auto !important;
-        opacity: 1;
-        visibility: visible;
-        transform: translate(-50%, -50%) scale(1); /* تكبير للحجم الطبيعي */
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        /* نكرر التمركز لضمان عدم تحركها عند الظهور */
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
-    /* 2. تصحيح نافذة الإشعارات (Notification Modal) */
-    .notification-modal {
-        width: 500px !important; /* عرض أكبر قليلاً للإشعارات */
-        max-height: 85vh;        /* أقصى ارتفاع */
-        overflow-y: auto;        /* سكرول داخلي إذا طال المحتوى */
-    }
+    /* 4. تخصيص الأحجام لكل نافذة */
     
-    /* إخفاء شريط التمرير في نافذة الإشعارات لجمالية أكثر */
-    .notification-modal::-webkit-scrollbar {
-        width: 6px;
-    }
-    .notification-modal::-webkit-scrollbar-thumb {
-        background-color: rgba(0,0,0,0.1);
-        border-radius: 10px;
-    }
-
-    /* 3. تصحيح سجل التحديثات (Updates History) */
-    .full-screen-modal {
-        height: auto !important;       /* إلغاء الارتفاع الكامل */
-        max-height: 80vh !important;   /* تحديد أقصى ارتفاع */
-        width: 600px !important;       /* عرض مناسب لقراءة النصوص */
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* جعل قائمة التحديثات قابلة للتمرير داخل النافذة */
-    .updates-timeline {
-        overflow-y: auto;
-        padding: 0 15px 20px 15px;
-        flex: 1; /* تأخذ المساحة المتبقية */
-    }
-
-    /* تثبيت رأس نافذة التحديثات */
-    .modal-header-sticky {
-        border-radius: 20px 20px 0 0; /* تدوير الحواف العلوية */
-        padding: 20px 25px;
-    }
-
-    /* 4. تصحيح نافذة التثبيت (Install Modal) */
+    /* نافذة التثبيت */
     #install-modal {
-        width: 400px !important; /* حجم صغير وملموم */
+        width: 380px !important;
+        max-width: 90vw !important;
+        padding: 30px !important;
         text-align: center;
     }
     
-    #install-modal .modal-img {
-        width: 100px;
-        height: 100px;
-        margin-top: -50px; /* رفع الصورة للأعلى قليلاً */
-        background: white;
-        padding: 5px;
-        border-radius: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    /* نافذة الإشعارات */
+    .notification-modal {
+        width: 480px !important;
+        max-width: 90vw !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important; /* سكرول داخلي */
+        display: block !important; /* ضمان العرض ككتلة */
+    }
+
+    /* نافذة سجل التحديثات */
+    .full-screen-modal {
+        width: 600px !important;
+        height: auto !important;
+        max-height: 80vh !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
+    /* إصلاح محتوى سجل التحديثات */
+    .updates-timeline {
+        overflow-y: auto !important;
+        max-height: 60vh !important;
+        padding: 10px 20px !important;
+    }
+    
+    .modal-header-sticky {
+        position: relative !important; /* إلغاء التثبيت المعقد */
+        top: 0 !important;
+        border-radius: 24px 24px 0 0 !important;
+    }
+
     /* 5. تحسين الخلفية المظللة */
-    .modal-overlay.show {
-        backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
-        background: rgba(0, 0, 0, 0.6); /* تغميق الخلفية */
+    .modal-overlay {
+        z-index: 10000 !important; /* خلف النافذة مباشرة */
+        backdrop-filter: blur(4px);
+        background-color: rgba(0, 0, 0, 0.5) !important;
     }
 }
 
@@ -18651,6 +18658,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
