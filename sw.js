@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zakat-app-v3';
+const CACHE_NAME = 'zakat-app-v4';
 // الملفات التي سيتم تخزينها مؤقتاً (CSS, JS, Images)
 const ASSETS_TO_CACHE = [
   './',
@@ -57,3 +57,4 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+
