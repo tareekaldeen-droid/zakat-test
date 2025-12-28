@@ -3775,6 +3775,135 @@ body.dark-mode .smart-logo-box {
 
 
 
+/* تنسيق نافذة الإشعار */
+.notif-content {
+    padding: 0; /* إزالة الحواف الداخلية للكارد */
+    overflow: hidden;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.notif-header {
+    background: linear-gradient(135deg, rgba(13, 124, 102, 0.1), rgba(13, 124, 102, 0.05));
+    padding: 20px;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.notif-logo-wrapper {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.notif-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.notif-badges {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.badge-new {
+    background: #ff4757;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.badge-date {
+    background: rgba(0,0,0,0.05);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.notif-body-content {
+    padding: 20px;
+    margin-top: -20px; /* لسحب المحتوى للأعلى قليلاً */
+    position: relative;
+    z-index: 3;
+    background: var(--bg-color);
+    border-radius: 20px 20px 0 0;
+}
+
+.notif-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.notif-img-container {
+    margin: 10px 0 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
+}
+
+.notif-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.notif-text {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* تنسيق الزر ليشبه زر التثبيت */
+.notif-footer {
+    padding: 0 20px 20px;
+    background: var(--bg-color);
+}
+
+.btn-full-width {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px; /* حواف ناعمة */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(13, 124, 102, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-full-width:active {
+    transform: scale(0.98);
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 
 
@@ -3806,31 +3935,44 @@ body.dark-mode .smart-logo-box {
     <button class="close-modal" onclick="closeModal('install-modal')" data-ar="ليس الآن" data-tr="Şimdi Değil">ليس الآن</button>
 </div>
 
-<!-- نافذة الإشعارات المتطورة -->
-<div class="custom-modal notification-modal" id="notification-modal">
-    <div class="notif-header">
-        <img id="notif-logo-top" src="" class="notif-logo-small">
-        <div class="notif-meta">
-            <span id="notif-date" class="notif-date-badge"></span>
-            <span id="notif-time" class="notif-time-badge"></span>
+<!-- نافذة الإشعار بتصميم عصري -->
+<div id="notification-modal" class="modal-window">
+    <div class="modal-content notif-content">
+        <!-- رأس النافذة مع اللوجو -->
+        <div class="notif-header">
+            <div class="notif-logo-wrapper">
+                <img src="" id="notif-logo-top" alt="Logo" class="notif-logo">
+            </div>
+            <div class="notif-badges">
+                <span class="badge-new" data-ar="جديد" data-tr="YENİ">جديد</span>
+                <span id="notif-date" class="badge-date"></span>
+            </div>
         </div>
-    </div>
-    
-    <div class="notif-content">
-        <h3 class="notif-title animate-pop" id="notif-title"></h3>
-        
-        <div class="notif-image-container">
-            <img id="notif-img" src="" class="notif-main-img">
-            <div class="notif-glow"></div>
-        </div>
-        
-        <p class="notif-body" id="notif-body"></p>
-    </div>
 
-    <div class="notif-actions">
-        <button class="btn-primary notif-btn" onclick="closeNotification()" data-ar="حسناً، فهمت" data-tr="Tamam, Anladım">
-            حسناً، فهمت
-        </button>
+        <!-- جسم النافذة -->
+        <div class="notif-body-content">
+            <h3 id="notif-title" class="notif-title"></h3>
+            
+            <!-- حاوية الصورة بتصميم أنيق -->
+            <div class="notif-img-container">
+                <img id="notif-img" src="" alt="Update" class="notif-main-img">
+            </div>
+            
+            <p id="notif-body" class="notif-text"></p>
+        </div>
+
+        <!-- تذييل النافذة (الأزرار) - هنا التغيير الرئيسي -->
+        <div class="notif-footer">
+            <button class="btn-primary btn-full-width notif-btn" onclick="closeNotification()">
+                <span data-ar="تحديث الآن / حسناً" data-tr="Şimdi Güncelle / Tamam">حسناً، فهمت</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            
+            <!-- زر ثانوي صغير للإغلاق (اختياري) -->
+            <button class="btn-text" onclick="closeNotification()" style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
+                <span data-ar="إغلاق" data-tr="Kapat">إغلاق</span>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -18561,6 +18703,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
