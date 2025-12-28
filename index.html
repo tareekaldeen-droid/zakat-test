@@ -18379,8 +18379,9 @@ async function checkNotifications() {
                 const bodyEl = document.getElementById('notif-body');
                 if(bodyEl) bodyEl.textContent = content.body;
 
-                const imgEl = document.getElementById('notif-img');
-                if(imgEl) imgEl.src = latest.image;
+              const imgEl = document.getElementById('notif-img');
+              if(imgEl) imgEl.src = content.image; // ✅ هذا الكود الجديد يأخذ الصورة حسب اللغة
+
 
                 // عرض النافذة
                 setTimeout(() => {
@@ -18539,6 +18540,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
