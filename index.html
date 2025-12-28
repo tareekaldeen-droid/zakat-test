@@ -3492,13 +3492,17 @@ body.dark-mode .smart-logo-box {
 }
 
 .notif-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
     width: 100%;
-    padding: 14px;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.3);
-    transition: transform 0.2s;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    cursor: pointer; /* إضافة المؤشر ليعرف المستخدم أنه زر */
+    transition: transform 0.2s; /* تأثير بسيط عند الضغط */
 }
 
 .notif-btn:active {
@@ -18557,6 +18561,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
