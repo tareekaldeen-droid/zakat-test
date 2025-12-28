@@ -3396,6 +3396,246 @@ body.dark-mode .smart-logo-box {
 
 
 
+/* === تصميم نافذة الإشعارات العصرية === */
+.notification-modal {
+    border-radius: 25px 25px 0 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+@media (min-width: 768px) {
+    .notification-modal {
+        border-radius: 25px;
+        width: 450px;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 50%) !important; /* Center on desktop */
+        bottom: auto !important;
+        top: 50%;
+    }
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(to right, rgba(13, 124, 102, 0.05), transparent);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notif-logo-small {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notif-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.notif-date-badge, .notif-time-badge {
+    background: var(--bg-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.notif-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.notif-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.notif-image-container {
+    position: relative;
+    margin: 10px 0 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.notif-main-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.notif-image-container:hover .notif-main-img {
+    transform: scale(1.05);
+}
+
+.notif-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.notif-actions {
+    padding: 0 20px 20px;
+}
+
+.notif-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.3);
+    transition: transform 0.2s;
+}
+
+.notif-btn:active {
+    transform: scale(0.98);
+}
+
+/* === تصميم زر الإعدادات المطور === */
+.settings-row-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.settings-row-btn:hover {
+    background: white;
+    border-color: var(--primary-color);
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.row-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-bg-small {
+    width: 40px;
+    height: 40px;
+    background: rgba(13, 124, 102, 0.1);
+    color: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.row-title {
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.row-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* === تصميم سجل التحديثات (Timeline) === */
+.full-screen-modal {
+    height: 90vh; /* ليس كامل الشاشة تماماً لسهولة الإغلاق */
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-header-sticky {
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    margin-bottom: 15px;
+}
+
+.close-icon-btn {
+    background: #f5f5f5;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #333;
+}
+
+.updates-timeline {
+    padding: 10px 5px;
+}
+
+.update-card {
+    background: var(--bg-color);
+    border-radius: 16px;
+    padding: 0;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.update-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.02);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.version-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.update-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.update-body {
+    padding: 15px;
+}
+
+.update-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.update-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
 
 
 
@@ -3528,285 +3768,6 @@ body.dark-mode .smart-logo-box {
 
 
 
-/* === تصميم نافذة الإشعارات العصرية === */
-.notification-modal {
-    border-radius: 25px 25px 0 0;
-    padding: 0;
-    overflow: hidden;
-    background: var(--card-bg);
-}
-
-@media (min-width: 768px) {
-    .notification-modal {
-        border-radius: 25px;
-        width: 450px;
-        left: 50%;
-        bottom: 50%;
-        transform: translate(-50%, 50%) !important; /* Center on desktop */
-        bottom: auto !important;
-        top: 50%;
-    }
-}
-
-.notif-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(to right, rgba(13, 124, 102, 0.05), transparent);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.notif-logo-small {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.notif-meta {
-    display: flex;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.notif-date-badge, .notif-time-badge {
-    background: var(--bg-color);
-    padding: 4px 8px;
-    border-radius: 12px;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-}
-
-.notif-content {
-    padding: 20px;
-    text-align: center;
-}
-
-.notif-title {
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.notif-image-container {
-    position: relative;
-    margin: 10px 0 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.notif-main-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s;
-}
-
-.notif-image-container:hover .notif-main-img {
-    transform: scale(1.05);
-}
-
-.notif-body {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-
-/* === تعديل منطقة الأزرار لتشبه زر التثبيت === */
-.notif-actions {
-    padding: 0 20px 25px; /* زيادة المسافة السفلية قليلاً */
-    background: var(--card-bg); /* ضمان الخلفية */
-}
-
-.notif-btn {
-    width: 100%;
-    padding: 16px; /* زيادة الحجم قليلاً */
-    border-radius: 50px; /* حواف دائرية بالكامل مثل زر التثبيت */
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
-    
-    /* التدرج اللوني والظل المطابق لزر التثبيت */
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 8px 20px rgba(13, 124, 102, 0.3);
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* تأثير عند الضغط */
-.notif-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 5px 15px rgba(13, 124, 102, 0.2);
-}
-
-/* تأثير اللمعان الخفيف (اختياري لجمالية أكثر) */
-.notif-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
-}
-
-.notif-btn:hover::after {
-    left: 100%;
-}
-
-/* === تصميم زر الإعدادات المطور (كما هو) === */
-.settings-row-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background: var(--bg-color);
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-}
-
-.settings-row-btn:hover {
-    background: white;
-    border-color: var(--primary-color);
-    transform: translateX(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.row-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.icon-bg-small {
-    width: 40px;
-    height: 40px;
-    background: rgba(13, 124, 102, 0.1);
-    color: var(--primary-color);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-.row-title {
-    font-weight: 700;
-    color: var(--text-color);
-    font-size: 0.95rem;
-}
-
-.row-subtitle {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-}
-
-
-/* === تصميم سجل التحديثات (Timeline) === */
-.full-screen-modal {
-    height: 90vh; /* ليس كامل الشاشة تماماً لسهولة الإغلاق */
-    border-radius: 20px 20px 0 0;
-}
-
-.modal-header-sticky {
-    position: sticky;
-    top: 0;
-    background: var(--card-bg);
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-    margin-bottom: 15px;
-}
-
-.close-icon-btn {
-    background: #f5f5f5;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: #333;
-}
-
-.updates-timeline {
-    padding: 10px 5px;
-}
-
-.update-card {
-    background: var(--bg-color);
-    border-radius: 16px;
-    padding: 0;
-    margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-}
-
-.update-header {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.02);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.version-badge {
-    background: var(--primary-color);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.update-date {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.update-body {
-    padding: 15px;
-}
-
-.update-img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
-}
-
-.update-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-color);
-}
-
-
-
-
-
 
 
 
@@ -3840,47 +3801,35 @@ body.dark-mode .smart-logo-box {
     <button class="close-modal" onclick="closeModal('install-modal')" data-ar="ليس الآن" data-tr="Şimdi Değil">ليس الآن</button>
 </div>
 
-<!-- نافذة الإشعار بتصميم عصري -->
-<div id="notification-modal" class="modal-window">
-    <div class="modal-content notif-content">
-        <!-- رأس النافذة مع اللوجو -->
-        <div class="notif-header">
-            <div class="notif-logo-wrapper">
-                <img src="" id="notif-logo-top" alt="Logo" class="notif-logo">
-            </div>
-            <div class="notif-badges">
-                <span class="badge-new" data-ar="جديد" data-tr="YENİ">جديد</span>
-                <span id="notif-date" class="badge-date"></span>
-            </div>
+<!-- نافذة الإشعارات المتطورة -->
+<div class="custom-modal notification-modal" id="notification-modal">
+    <div class="notif-header">
+        <img id="notif-logo-top" src="" class="notif-logo-small">
+        <div class="notif-meta">
+            <span id="notif-date" class="notif-date-badge"></span>
+            <span id="notif-time" class="notif-time-badge"></span>
         </div>
+    </div>
+    
+    <div class="notif-content">
+        <h3 class="notif-title animate-pop" id="notif-title"></h3>
+        
+        <div class="notif-image-container">
+            <img id="notif-img" src="" class="notif-main-img">
+            <div class="notif-glow"></div>
+        </div>
+        
+        <p class="notif-body" id="notif-body"></p>
+    </div>
 
-        <!-- جسم النافذة -->
-        <div class="notif-body-content">
-            <h3 id="notif-title" class="notif-title"></h3>
-            
-            <!-- حاوية الصورة بتصميم أنيق -->
-            <div class="notif-img-container">
-                <img id="notif-img" src="" alt="Update" class="notif-main-img">
-            </div>
-            
-            <p id="notif-body" class="notif-text"></p>
-        </div>
-
-        <!-- تذييل النافذة (الأزرار) - هنا التغيير الرئيسي -->
-        <div class="notif-footer">
-            <button class="btn-primary btn-full-width notif-btn" onclick="closeNotification()">
-                <span data-ar="تحديث الآن / حسناً" data-tr="Şimdi Güncelle / Tamam">حسناً، فهمت</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </button>
-            
-            <!-- زر ثانوي صغير للإغلاق (اختياري) -->
-            <button class="btn-text" onclick="closeNotification()" style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
-                <span data-ar="إغلاق" data-tr="Kapat">إغلاق</span>
-            </button>
-        </div>
+    <div class="notif-actions">
+        <button class="btn-primary notif-btn" onclick="closeNotification()" data-ar="حسناً، فهمت" data-tr="Tamam, Anladım">
+            حسناً، فهمت
+        </button>
     </div>
 </div>
 
+    
 <!-- نافذة سجل التحديثات (تظهر عند الضغط على زر في الإعدادات) -->
 <div class="custom-modal full-screen-modal" id="updates-history-modal">
     <div class="modal-header-sticky">
